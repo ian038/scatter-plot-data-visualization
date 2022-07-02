@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 def init():
-    x = np.linspace(0, 10, 30)
-    y = np.sin(x**2)
+    x = np.arange(50)
+    y = x + 10 * np.random.randn(50)
 
     # Plotting
     fig = plt.figure()
@@ -13,6 +13,9 @@ def init():
     p, = ax.plot(x, y, 'o', color='black')
     plt.subplots_adjust(left=0.3, bottom=0.25)
     plt.scatter(x, y)
+    ax.set_xlabel('x axis')
+    ax.set_ylabel('y axis')
+    ax.set_title('Simple Scatter Plot')
 
     # Grid display control
     ax_button = plt.axes([0.25, 0.1, 0.08, 0.05])
@@ -26,7 +29,7 @@ def init():
     # Color change control
     axcolor = 'lightgoldenrodyellow'
     rax = plt.axes([0.02, 0.5, 0.2, 0.3], facecolor=axcolor)
-    color_button = RadioButtons(rax, ['red', 'green', 'blue', 'black'],
+    color_button = RadioButtons(rax, ('red', 'green', 'blue', 'black'),
                                 [False, False, False, True], activecolor='r')
 
     def color_change(label):
