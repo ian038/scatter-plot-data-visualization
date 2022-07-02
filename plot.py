@@ -12,13 +12,11 @@ plt.plot(x, y, 'o', color='black')
 plt.subplots_adjust(left=0.3, bottom=0.25)
 plt.scatter(x, y)
 
-
+# Button
 ax_button = plt.axes([0.25, 0.1, 0.08, 0.05])
 
 # properties of the button
 grid_button = Button(ax_button, 'Grid', color='white', hovercolor='grey')
-
-# enabling/disabling the grid
 
 
 def grid(val):
@@ -26,7 +24,7 @@ def grid(val):
     fig.canvas.draw()  # redraw the figure
 
 
-# triggering event is the clicking
+# enable/disable grid
 grid_button.on_clicked(grid)
 
 plt.show()
