@@ -1,6 +1,7 @@
 from matplotlib.widgets import Button, RadioButtons, CheckButtons
 import numpy as np
 import matplotlib.pyplot as plt
+from ipywidgets import widgets
 
 
 def init():
@@ -11,14 +12,15 @@ def init():
     fig = plt.figure()
     ax = fig.subplots()
     p, = ax.plot(x, y, 'o', color='black')
-    plt.subplots_adjust(left=0.3, bottom=0.25)
+    plt.subplots_adjust(left=0.4, bottom=0.25)
     plt.scatter(x, y)
     ax.set_xlabel('x axis')
     ax.set_ylabel('y axis')
     ax.set_title('Simple Scatter Plot')
+    ax.autoscale(enable=True)
 
     # Grid display control
-    ax_button = plt.axes([0.25, 0.1, 0.08, 0.05])
+    ax_button = plt.axes([0.4, 0.1, 0.08, 0.05])
     grid_button = Button(ax_button, 'Grid', color='white', hovercolor='grey')
 
     def grid_display(val):
@@ -27,9 +29,9 @@ def init():
     grid_button.on_clicked(grid_display)
 
     # Color change control
-    axcolor = 'lightgoldenrodyellow'
-    rax = plt.axes([0.02, 0.5, 0.2, 0.3], facecolor=axcolor)
-    color_button = RadioButtons(rax, ('red', 'green', 'blue', 'black'),
+    rax = plt.axes([0.1, 0.5, 0.2, 0.3], facecolor='lightgoldenrodyellow')
+    rax.set_title('Color Controls')
+    color_button = RadioButtons(rax, ('Red', 'Green', 'Blue', 'Black'),
                                 [False, False, False, True], activecolor='r')
 
     def color_change(label):
